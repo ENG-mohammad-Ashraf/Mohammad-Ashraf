@@ -412,14 +412,14 @@ function animateSkillsOnScroll() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                
+
                 setTimeout(() => {
-                    
+
                     const skillProgresses = entry.target.querySelectorAll('.skill-progress');
                     skillProgresses.forEach(progress => {
                         progress.classList.add('animate');
-                        
-                        
+
+
                         const percentage = progress.querySelector('.progress-percentage');
                         if (percentage) {
                             setTimeout(() => {
@@ -427,21 +427,21 @@ function animateSkillsOnScroll() {
                             }, 500);
                         }
                     });
-                    
+
                     const radialItems = entry.target.querySelectorAll('.radial-item');
                     radialItems.forEach((item, index) => {
                         setTimeout(() => {
                             item.classList.add('animate');
                         }, index * 300);
                     });
-                    
-                }, 500); 
+
+                }, 500);
             } else {
                 const radialItems = entry.target.querySelectorAll('.radial-item');
                 radialItems.forEach(item => {
                     item.classList.remove('animate');
                 });
-                
+
                 const skillProgresses = entry.target.querySelectorAll('.skill-progress');
                 skillProgresses.forEach(progress => {
                     progress.classList.remove('animate');
@@ -453,7 +453,8 @@ function animateSkillsOnScroll() {
             }
         });
     }, {
-        threshold: 0.3 // عندما يكون 30% من العنصر مرئي
+        threshold: 0,
+        rootMargin: '-50px 0px -50px 0px'
     });
     
     skillSections.forEach(section => {
