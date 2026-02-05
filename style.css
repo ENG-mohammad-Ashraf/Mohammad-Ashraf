@@ -371,6 +371,7 @@ a{
     backdrop-filter: blur(10px);
     box-shadow: 1px 1px 20px #012290f7,
                 1px 1px 40px #0053b8f7;
+    margin: 30px 10px;
 }
 
 .service-item i {
@@ -534,6 +535,11 @@ a{
 .css-progress::before { width: 85%; }
 .js-progress::before { width: 80%; }
 .react-progress::before { width: 75%; }
+.typescript-progress::before { width: 70%; }
+.itpm-progress::before { width: 80%; }
+.crm-progress::before { width: 75%; }
+.jira-progress::before { width: 80%; }
+.estimation-progress::before { width: 70%; }
 
 /* Professional Skills */
 .radial-skills {
