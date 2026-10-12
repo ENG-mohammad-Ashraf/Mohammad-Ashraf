@@ -456,12 +456,114 @@ a{
     margin: 0 auto;
 }
 
+.skill-item.is-hidden {
+    display: none;
+}
+
 .skill-item {
     display: flex;
     align-items: center;
     gap: 20px;
     margin: 35px 0;
     position: relative;
+}
+
+.skills-more-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 10px 28px;
+    border: 2px solid var(--main-color);
+    border-radius: 40px;
+    background: var(--main-color);
+    color: #1f242d;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.skills-more-btn:hover {
+    background: transparent;
+    color: var(--main-color);
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+.skills-dialog {
+    width: min(900px, calc(100% - 32px));
+    max-width: none;
+    max-height: 85vh;
+    margin: auto;
+    padding: 28px;
+    overflow: hidden;
+    border: 1px solid var(--main-color);
+    border-radius: 16px;
+    background: #1f242d;
+    color: #fff;
+    box-shadow: 0 0 30px rgba(0, 255, 255, .25);
+}
+
+.skills-dialog[open] {
+    display: block;
+}
+
+.skills-dialog::backdrop {
+    background: rgba(0, 0, 0, .75);
+    backdrop-filter: blur(4px);
+}
+
+.skills-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+.skills-dialog-title {
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+.skills-dialog-close {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid var(--main-color);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--main-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.skills-dialog-close:hover {
+    background: var(--main-color);
+    color: #1f242d;
+}
+
+.skills-dialog-bars {
+    max-width: none;
+    max-height: calc(85vh - 120px);
+    padding: 8px 12px 8px 0;
+    overflow-y: auto;
+}
+
+.skills-dialog-bars .skill-item.fade-in {
+    animation: skillFadeIn .35s ease both;
+}
+
+@keyframes skillFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .skill-icon {
@@ -540,6 +642,15 @@ a{
 .crm-progress::before { width: 75%; }
 .jira-progress::before { width: 80%; }
 .estimation-progress::before { width: 70%; }
+.supabase-progress::before { width: 80%; }
+.github-progress::before { width: 85%; }
+.linux-progress::before { width: 75%; }
+.cti-progress::before { width: 80%; }
+.osint-progress::before { width: 75%; }
+.network-progress::before { width: 70%; }
+.security-progress::before {width: 80%}
+
+
 
 /* Professional Skills */
 .radial-skills {
@@ -1075,6 +1186,10 @@ a{
     .skills-heading {
         font-size: 2rem;
         margin-bottom: 40px;
+    }
+
+    #Web-Engineering {
+        padding: 60px 5%;
     }
     
     .skill-item {
