@@ -226,8 +226,90 @@
                     <span class="progress-percentage">70%</span>
                 </div>
             </div>
-                    </div>
+            <!-- Supabase (Database & Auth) -->
+            <div class="skill-item">
+                <i class="fa-solid fa-database skill-icon" style="color: #3ecf8e;"></i>
+                <div class="skill-info">
+                    <span>Supabase (Database & Auth)</span>
                 </div>
+                <div class="skill-progress supabase-progress" data-percentage="80%">
+                    <span class="progress-percentage">80%</span>
+                </div>
+            </div>
+
+            <!-- Git / GitHub (Version Control) -->
+            <div class="skill-item">
+                <i class="fa-brands fa-github skill-icon" style="color: #ffffff;"></i>
+                <div class="skill-info">
+                    <span>Git / GitHub (Version Control)</span>
+                </div>
+                <div class="skill-progress github-progress" data-percentage="85%">
+                    <span class="progress-percentage">85%</span>
+                </div>
+            </div>
+
+            <!-- Linux Systems (Basic Administration & Scripting) -->
+            <div class="skill-item">
+                <i class="fa-brands fa-linux skill-icon" style="color: #fcc624;"></i>
+                <div class="skill-info">
+                    <span>Linux Systems & Scripting</span>
+                </div>
+                <div class="skill-progress linux-progress" data-percentage="75%">
+                    <span class="progress-percentage">75%</span>
+                </div>
+            </div>
+            <!-- Cyber Threat Intelligence (CTI) Fundamentals -->
+            <div class="skill-item">
+                <i class="fa-solid fa-eye skill-icon" style="color: #00bcd4;"></i>
+                <div class="skill-info">
+                    <span>CTI Fundamentals</span>
+                </div>
+                <div class="skill-progress cti-progress" data-percentage="70%">
+                    <span class="progress-percentage">70%</span>
+                </div>
+            </div>
+
+            <!-- OSINT (Open Source Intelligence) Techniques -->
+            <div class="skill-item">
+                <i class="fa-solid fa-magnifying-glass-chart skill-icon" style="color: #ff9800;"></i>
+                <div class="skill-info">
+                    <span>OSINT Techniques</span>
+                </div>
+                <div class="skill-progress osint-progress" data-percentage="75%">
+                    <span class="progress-percentage">75%</span>
+                </div>
+            </div>
+
+            <!-- Network Traffic Analysis (Wireshark / Packet Tracer) -->
+            <div class="skill-item">
+                <i class="fa-solid fa-network-wired skill-icon" style="color: #2196f3;"></i>
+                <div class="skill-info">
+                    <span>Network Traffic Analysis</span>
+                </div>
+                <div class="skill-progress network-progress" data-percentage="70%">
+                    <span class="progress-percentage">70%</span>
+                </div>
+            </div>
+
+            <!-- Secure Coding Practices (Web Application Security) -->
+            <div class="skill-item">
+                <i class="fa-solid fa-shield-halved skill-icon" style="color: #e91e63;"></i>
+                <div class="skill-info">
+                    <span>Secure Coding Practices</span>
+                </div>
+                <div class="skill-progress security-progress" data-percentage="80%">
+                    <span class="progress-percentage">80%</span>
+                </div>
+            </div>
+
+            
+
+        </div>
+        <button class="skills-more-btn" id="seeMoreBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
+            See more
+        </button>
+
+    </div>
 
     <div class="skills-container">
         <h1 class="skills-heading">Professional Skills</h1>
@@ -308,6 +390,16 @@
         </div>
     </div>
 </section>
+
+<dialog class="skills-dialog" id="skillsDialog" aria-labelledby="skillsDialogTitle">
+    <div class="skills-dialog-header">
+        <h2 class="skills-dialog-title" id="skillsDialogTitle">All Technical Skills</h2>
+        <button class="skills-dialog-close" id="closeSkillsDialog" type="button" aria-label="Close skills dialog" autofocus>
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="skills-bars skills-dialog-bars" id="skillsDialogBars"></div>
+</dialog>
 
 <section style="padding-top: 10px; ">
     <div id="portfolio">
@@ -474,6 +566,51 @@ function animateSkillsOnScroll() {
 // استدعاء الوظيفة عندما يتم تحميل الصفحة
 document.addEventListener('DOMContentLoaded', animateSkillsOnScroll);
 
+const VISIBLE_COUNT = 5;
+const skillItems = document.querySelectorAll('.skills-bars:not(.skills-dialog-bars) .skill-item');
+const seeMoreBtn = document.getElementById('seeMoreBtn');
+const skillsDialog = document.getElementById('skillsDialog');
+const skillsDialogBars = document.getElementById('skillsDialogBars');
+const closeSkillsDialogBtn = document.getElementById('closeSkillsDialog');
+
+skillItems.forEach((item, index) => {
+    if (index >= VISIBLE_COUNT) {
+        item.classList.add('is-hidden');
+    }
+
+    const skillCopy = item.cloneNode(true);
+    skillCopy.classList.remove('is-hidden');
+    skillCopy.classList.add('fade-in');
+    skillCopy.querySelector('.skill-progress').classList.add('animate');
+    skillCopy.querySelector('.progress-percentage').classList.add('show');
+    skillsDialogBars.append(skillCopy);
+});
+
+seeMoreBtn.addEventListener('click', () => {
+    if (skillsDialog.open) {
+        skillsDialog.close();
+        return;
+    }
+
+    skillsDialog.showModal();
+    seeMoreBtn.textContent = 'See less';
+    seeMoreBtn.setAttribute('aria-expanded', 'true');
+});
+
+closeSkillsDialogBtn.addEventListener('click', () => {
+    skillsDialog.close();
+});
+
+skillsDialog.addEventListener('close', () => {
+    seeMoreBtn.textContent = 'See more';
+    seeMoreBtn.setAttribute('aria-expanded', 'false');
+});
+
+skillsDialog.addEventListener('click', (event) => {
+    if (event.target === skillsDialog) {
+        skillsDialog.close();
+    }
+});
 
 
 
