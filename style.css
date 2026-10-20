@@ -645,7 +645,7 @@ a{
 .supabase-progress::before { width: 80%; }
 .github-progress::before { width: 85%; }
 .linux-progress::before { width: 75%; }
-.cti-progress::before { width: 80%; }
+.cti-progress::before { width: 70%; }
 .osint-progress::before { width: 75%; }
 .network-progress::before { width: 70%; }
 .security-progress::before {width: 80%}
